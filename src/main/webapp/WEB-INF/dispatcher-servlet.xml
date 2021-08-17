@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+       http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="true">
+
+    <!--开启controller扫描-->
+    <context:component-scan base-package="com.healthme.controller"/>
+
+    <!--自动注册最合适的处理器映射器，处理器适配器(调用handler方法)-->
+    <mvc:annotation-driven/>
+
+    <!-- 启动AspectJ自动代理 -->
+    <aop:aspectj-autoproxy/>
+
+<!--    &lt;!&ndash; Activates scanning of @Autowired &ndash;&gt;-->
+<!--    <context:annotation-config/>-->
+
+    <!--配置springmvc的视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <import resource="classpath:applicationContext.xml"/>
+
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <bean class="com.healthme.interceptor.CommonInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+</beans>
